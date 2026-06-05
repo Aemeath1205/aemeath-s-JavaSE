@@ -13,26 +13,27 @@ public abstract class User {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getID() {
         return ID;
     }
-
     public void setID(int ID) {
         this.ID = ID;
     }
-
     public String getRole() {
         return role;
     }
-
     public void setRole(String role) {
         this.role = role;
     }
-
     public abstract int display();
+    public  void update(){};
+    public  void removeBook(){};
+    public void borrowCount() {}
+    public void generatebook() {}
+    public void checkInventoryStatus(){}
+    public void borrowBook() {}
+    public void returnBook(){}
 }

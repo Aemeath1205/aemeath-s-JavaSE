@@ -1,4 +1,7 @@
-package user;
+package user.factory;
+
+import user.NormalUser;
+import user.User;
 
 public class NormalUserFactory implements IUserFactory {
     @Override

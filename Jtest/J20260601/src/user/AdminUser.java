@@ -1,5 +1,7 @@
 package user;
 
+import book.Library;
+
 import java.util.Scanner;
 
 public class AdminUser extends User{
@@ -24,17 +26,38 @@ public class AdminUser extends User{
         System.out.println("请选择你的操作：");
         return scanner.nextInt();
     }
+    Library library = new Library();
+
+    public void update() {
+
+    }
+
+
+    public void delete() {
+
+    }
+
     public void addBook() {
     }
     public void updateBook() {
+
     }
     public void removeBook() {
+        library.loadallbooks();
+        System.out.println("请输入你要下架的书的名称");
+        Scanner sc = new Scanner(System.in);
+        library.removeBook(sc.nextLine());
     }
     public void borrowCount() {
+        System.out.println("你想要知道哪本书的借阅次数");
+        Scanner sc = new Scanner(System.in);
+        library.findborrowcount(sc.nextLine());
     }
     public void generatebook() {
+        library.getgeneratebook();
     }
     public void checkInventoryStatus() {
+        library.checkInventoryStatus();
     }
     public void checkAndRemoveOldBooks() {
     }

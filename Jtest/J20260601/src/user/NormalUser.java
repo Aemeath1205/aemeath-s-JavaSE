@@ -1,5 +1,7 @@
 package user;
 
+import book.Library;
+
 import java.util.Scanner;
 
 public class NormalUser extends User {
@@ -7,6 +9,7 @@ public class NormalUser extends User {
     public NormalUser(String name, int ID) {
         super(name, ID, "普通用户");
     }
+    Library library = new Library();
 
     @Override
     public int display() {
@@ -21,9 +24,14 @@ public class NormalUser extends User {
         return scanner.nextInt();
     }
     public void borrowBook() {
+        Scanner scanner = new Scanner(System.in);
+        String bookName = scanner.nextLine();
+
+        library.borrowbook(bookName);
     }
     //归还图书
     public void returnBook() {
+        library.returnbook();
     }
     // 查看个⼈借阅情况
     public void viewBorrowBooks() {
