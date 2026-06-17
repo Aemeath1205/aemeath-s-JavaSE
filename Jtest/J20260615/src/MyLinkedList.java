@@ -136,4 +136,116 @@ public class MyLinkedList implements CommonLinkedList {
         }
         return tmp;
     }
+
+//    单链表的逆置
+    public void reverse(){
+        if(head == null || head.next_address == null){
+            return;
+        }
+        EachElementOfMyLinkedList tmp1 = head;
+        EachElementOfMyLinkedList tmp2 = head.next_address;
+        EachElementOfMyLinkedList beforethetmp1 = null;
+        while(tmp1 != null){
+            if(tmp1==head){
+                tmp1.next_address = null;
+                beforethetmp1 =tmp1;
+                tmp1 = tmp2;
+                tmp2 = tmp2.next_address;
+            }else{
+                tmp1.next_address = beforethetmp1;
+                beforethetmp1 = tmp1;
+                if(tmp2 == null){
+                    break;
+                }
+                tmp1 = tmp2;
+                tmp2 = tmp2.next_address;
+            }
+        }
+        head = tmp1;
+    }
+//    获取链表的中间节点
+    public EachElementOfMyLinkedList getmiddleoflist(){
+        if(head==null){
+            return head;
+        }
+        EachElementOfMyLinkedList slow = head;
+        EachElementOfMyLinkedList fast = head;
+        while(fast.next_address != null){
+            slow = slow.next_address;
+            if(fast.next_address.next_address != null){
+                fast = fast.next_address.next_address;
+            }else{
+                break;
+            }
+        }
+        return slow;
+    }
+
+//    获取链表倒数第K个节点
+    public EachElementOfMyLinkedList getlastkelement(int k){
+        EachElementOfMyLinkedList slow = head;
+        EachElementOfMyLinkedList fast = head;
+        if(k>getsize()||k<=0){
+            System.out.println("k is illeagl");
+            return null;
+        }
+        for(int i = 0;i<k;i++){
+            fast = fast.next_address;
+        }
+        while(fast != null){
+            slow = slow.next_address;
+            fast = fast.next_address;
+        }
+        return slow;
+    }
+
+//    判定链表是否是回文
+    public boolean checkifhuiwen(){
+        EachElementOfMyLinkedList mid = getmiddleoflist();
+        MyLinkedList newone = new MyLinkedList();
+        EachElementOfMyLinkedList tmp = this.head;
+        newone.head = mid;
+        newone.reverse();
+        EachElementOfMyLinkedList tmp2 = newone.head;
+
+        while(tmp2!=null){
+            if(tmp2.elemnt != tmp.elemnt){
+                return false;
+            }else{
+                if(tmp.next_address == tmp2){
+                    return true;
+                }
+                tmp2 = tmp2.next_address;
+                tmp = tmp.next_address;
+            }
+        }
+        return true;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
