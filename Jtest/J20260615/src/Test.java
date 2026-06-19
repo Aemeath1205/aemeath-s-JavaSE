@@ -11,7 +11,7 @@ public class Test {
         linkedList.add(1);
         linkedList.display();
 //        linkedList.add(2);
-       System.out.println(linkedList.checkifhuiwen());
+//       System.out.println(linkedList.checkifhuiwen());
 //        linkedList2.add(1);
 //        linkedList2.add(3);
 //        linkedList2.add(4);
