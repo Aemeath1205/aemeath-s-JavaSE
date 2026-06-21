@@ -221,6 +221,48 @@ public class MyLinkedList implements CommonLinkedList {
         }
         return true;
     }
+
+//    给定 x, 把一个链表整理成前半部分小于 x, 后半部分大于等于 x 的形式
+    public void adapt_list_by_x(int x){
+        EachElementOfMyLinkedList smaller = null;
+        EachElementOfMyLinkedList smallertmp = null;
+        EachElementOfMyLinkedList bigger = null;
+        EachElementOfMyLinkedList biggertmp = null;
+        EachElementOfMyLinkedList tmphead = head;
+        if(head==null||head.next_address==null){
+            return;
+        }
+        while(tmphead != null){
+            if(tmphead.elemnt<x){
+                if(smaller==null){
+                    smaller=tmphead;
+                    tmphead = tmphead.next_address;
+                    smaller.next_address=null;
+                    smallertmp = smaller;
+                }else{
+                    smallertmp.next_address = tmphead;
+                    smallertmp = smallertmp.next_address;
+                    tmphead = tmphead.next_address;
+                    smallertmp.next_address = null;
+                }
+            }else{
+                if(bigger==null){
+                    bigger=tmphead;
+                    tmphead = tmphead.next_address;
+                    bigger.next_address=null;
+                    biggertmp = bigger;
+                }else{
+                    biggertmp.next_address = tmphead;
+                    biggertmp = biggertmp.next_address;
+                    tmphead = tmphead.next_address;
+                    biggertmp.next_address = null;
+                }
+            }
+        }
+        smallertmp.next_address = bigger;
+        head = smaller;
+    }
+
 }
 
 
